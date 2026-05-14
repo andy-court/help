@@ -110,7 +110,8 @@
     "contactText": "Bei Fragen zum Datenschutz wenden Sie sich bitte an: [ihre-email@beispiel.de]"
   },
   "crisis": {
-    "text": "In einer Krise? Kostenlose 24/7-Hilfe:"
+    "text": "In einer Krise? Kostenlose 24/7-Hilfe:",
+    "germany": "Deutschland"
   },
   "legal": {
     "impressum": "Impressum",

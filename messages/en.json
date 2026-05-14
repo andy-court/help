@@ -110,7 +110,8 @@
     "contactText": "For questions regarding data protection, please contact us at: [your-email@example.com]"
   },
   "crisis": {
-    "text": "In crisis? Free 24/7 helpline:"
+    "text": "In crisis? Free 24/7 helpline:",
+    "germany": "Germany"
   },
   "legal": {
     "impressum": "Legal Notice",
