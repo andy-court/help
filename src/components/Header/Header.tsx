@@ -26,6 +26,7 @@ import {
   logoLink,
   navLinks,
   ctaButton,
+  mobileCtaButton,
   mobileMenuButton,
   socialLinks,
   localeSwitchButton,
@@ -123,6 +124,17 @@ export default function Header() {
               <LinkedInIcon />
             </IconButton>
           </Box>
+
+          <Button
+            component={NavLink}
+            href="/therapists"
+            variant="contained"
+            color="primary"
+            size="small"
+            sx={mobileCtaButton}
+          >
+            {t("bookSession")}
+          </Button>
 
           <IconButton
             sx={mobileMenuButton}

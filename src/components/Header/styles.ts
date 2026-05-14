@@ -20,6 +20,13 @@ export const ctaButton: SxProps<Theme> = {
   whiteSpace: "nowrap",
 };
 
+export const mobileCtaButton: SxProps<Theme> = {
+  display: { xs: "inline-flex", md: "none" },
+  ml: "auto",
+  whiteSpace: "nowrap",
+  fontSize: "0.75rem",
+};
+
 export const mobileMenuButton: SxProps<Theme> = {
   display: { xs: "flex", md: "none" },
 };

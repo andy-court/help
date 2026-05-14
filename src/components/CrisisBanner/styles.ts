@@ -20,11 +20,3 @@ export const phoneIcon: SxProps<Theme> = {
   fontSize: 16,
 };
 
-export const mobileCtaButton: SxProps<Theme> = {
-  display: { xs: "inline-flex", md: "none" },
-  ml: 1,
-  whiteSpace: "nowrap",
-  fontSize: "0.75rem",
-  py: 0.25,
-  px: 1.5,
-};
