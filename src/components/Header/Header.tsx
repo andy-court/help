@@ -21,6 +21,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import NavLink from "@/components/NavLink";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { siteConfig } from "@/siteConfig";
 import {
   toolbar,
   logoLink,
@@ -36,6 +37,11 @@ import {
   drawerSocialItem,
 } from "./styles";
 
+const isSingle = siteConfig.mode === "single";
+const bookingHref = isSingle
+  ? `/booking/${siteConfig.singleTherapistSlug}`
+  : "/therapists";
+
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const t = useTranslations("nav");
@@ -45,7 +51,7 @@ export default function Header() {
 
   const pages = [
     { label: t("home"), href: "/" },
-    { label: t("therapists"), href: "/therapists" },
+    ...(!isSingle ? [{ label: t("therapists"), href: "/therapists" }] : []),
     { label: t("blog"), href: "/blog" },
     { label: t("about"), href: "/about" },
     { label: t("faq"), href: "/faq" },
@@ -83,7 +89,7 @@ export default function Header() {
             ))}
             <Button
               component={NavLink}
-              href="/therapists"
+              href={bookingHref}
               variant="contained"
               color="primary"
               sx={ctaButton}
@@ -127,7 +133,7 @@ export default function Header() {
 
           <Button
             component={NavLink}
-            href="/therapists"
+            href={bookingHref}
             variant="contained"
             color="primary"
             size="small"
@@ -166,7 +172,7 @@ export default function Header() {
           <ListItem disablePadding sx={drawerCtaItem}>
             <Button
               component={NavLink}
-              href="/therapists"
+              href={bookingHref}
               variant="contained"
               color="primary"
               fullWidth

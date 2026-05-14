@@ -3,7 +3,12 @@ import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { Typography, Container, Button, Box } from "@mui/material";
 import NavLink from "@/components/NavLink";
+import { siteConfig } from "@/siteConfig";
 import { heroContainer, heroTitle, heroSubtitle } from "./styles";
+
+const bookingHref = siteConfig.mode === "single"
+  ? `/booking/${siteConfig.singleTherapistSlug}`
+  : "/therapists";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("home");
@@ -38,7 +43,7 @@ export default function Home() {
           variant="contained"
           size="large"
           component={NavLink}
-          href="/therapists"
+          href={bookingHref}
         >
           {t("cta")}
         </Button>
