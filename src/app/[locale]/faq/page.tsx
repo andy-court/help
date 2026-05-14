@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import {
   Typography,
   Container,
@@ -9,6 +11,14 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { pageContainer, accordionGroup } from "./styles";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("faq");
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+  };
+}
 
 const faqKeys = [
   "booking",

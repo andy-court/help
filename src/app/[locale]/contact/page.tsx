@@ -11,15 +11,30 @@ import {
   Alert,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { pageContainer, form } from "./styles";
+import { submitContactForm } from "@/app/actions";
+import { pageContainer, form, successAlert, honeypot, submitButton } from "./styles";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const t = useTranslations("contact");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: Submit to Supabase
+    setError(false);
+    setSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const result = await submitContactForm(formData);
+
+    setSubmitting(false);
+
+    if (!result.success) {
+      setError(true);
+      return;
+    }
+
     setSubmitted(true);
   };
 
@@ -33,11 +48,21 @@ export default function Contact() {
       </Typography>
 
       {submitted ? (
-        <Alert severity="success" sx={{ mt: 4 }}>
+        <Alert severity="success" sx={successAlert}>
           {t("success")}
         </Alert>
       ) : (
         <Box component="form" onSubmit={handleSubmit} sx={form}>
+          {error && (
+            <Alert severity="error">{t("error")}</Alert>
+          )}
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            style={honeypot}
+          />
           <TextField label={t("nameLabel")} name="name" required fullWidth />
           <TextField label={t("emailLabel")} name="email" type="email" required fullWidth />
           <TextField
@@ -52,10 +77,11 @@ export default function Contact() {
             type="submit"
             variant="contained"
             size="large"
+            disabled={submitting}
             endIcon={<SendIcon />}
-            sx={{ alignSelf: "flex-start" }}
+            sx={submitButton}
           >
-            {t("send")}
+            {submitting ? t("sending") : t("send")}
           </Button>
         </Box>
       )}

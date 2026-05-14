@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Typography, Container, Button, Box } from "@mui/material";
 import NavLink from "@/components/NavLink";
-import { heroContainer } from "./styles";
+import { heroContainer, heroTitle, heroSubtitle } from "./styles";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("home");
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+  };
+}
 
 export default function Home() {
   const t = useTranslations("home");
@@ -9,10 +19,19 @@ export default function Home() {
   return (
     <Container maxWidth="md">
       <Box sx={heroContainer}>
-        <Typography variant="h2" component="h1" fontWeight="bold">
+        <Typography
+          variant="h2"
+          component="h1"
+          fontWeight="bold"
+          sx={heroTitle}
+        >
           {t("title")}
         </Typography>
-        <Typography variant="h5" color="text.secondary">
+        <Typography
+          variant="h5"
+          color="text.secondary"
+          sx={heroSubtitle}
+        >
           {t("subtitle")}
         </Typography>
         <Button

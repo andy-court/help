@@ -17,3 +17,8 @@ export const links: SxProps<Theme> = {
   gap: 1,
   alignItems: "center",
 };
+
+export const legalLink: SxProps<Theme> = {
+  textDecoration: "none",
+  "&:hover": { textDecoration: "underline" },
+};

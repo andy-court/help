@@ -11,5 +11,11 @@ export const bannerContent: SxProps<Theme> = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  gap: 1,
+  flexWrap: "wrap",
+  gap: { xs: 0.5, md: 1 },
+  textAlign: "center",
+};
+
+export const phoneIcon: SxProps<Theme> = {
+  fontSize: 16,
 };

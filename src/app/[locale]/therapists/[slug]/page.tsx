@@ -1,4 +1,5 @@
-import { getTranslations } from "next-intl/server";
+import type { Metadata } from "next";
+import { getTranslations, getLocale } from "next-intl/server";
 import {
   Typography,
   Container,
@@ -9,50 +10,78 @@ import {
 } from "@mui/material";
 import Image from "next/image";
 import NavLink from "@/components/NavLink";
-import { pageContainer, profileHeader, profilePhotoWrapper, chipContainer } from "./styles";
-
-// TODO: Replace with Supabase fetch by slug
-const placeholderTherapist = {
-  slug: "livia-malkus",
-  name: "Livia Malkus",
-  photo: "/images/therapists/livia-malkus.jpg",
-  title: "Licensed Psychotherapist",
-  specialties: ["Anxiety", "Depression", "Stress Management"],
-  bio: "With over 10 years of experience in cognitive behavioural therapy, I help individuals navigate anxiety, depression, and life transitions. My approach is warm, collaborative, and grounded in evidence-based techniques.\n\nI believe that therapy is a partnership. Together, we will explore the patterns that keep you stuck and develop practical strategies to help you move forward with confidence.",
-};
+import { supabase } from "@/lib/supabase";
+import { pageContainer, profileHeader, profilePhotoWrapper, profilePhoto, profileInfo, chipContainer, profileDivider, bioParagraph } from "./styles";
 
 interface TherapistProfileProps {
   params: Promise<{ slug: string }>;
 }
 
+export async function generateMetadata({ params }: TherapistProfileProps): Promise<Metadata> {
+  const { slug } = await params;
+  const locale = await getLocale();
+  const { data: therapist } = await supabase
+    .from("therapists")
+    .select("name, title_en, title_de, bio_en, bio_de")
+    .eq("slug", slug)
+    .eq("active", true)
+    .single();
+
+  if (!therapist) return { title: "Not Found" };
+
+  const title = locale === "de" ? therapist.title_de : therapist.title_en;
+  const bio = locale === "de" ? therapist.bio_de : therapist.bio_en;
+
+  return {
+    title: `${therapist.name} — ${title}`,
+    description: bio?.split("\n\n")[0] ?? "",
+  };
+}
+
 export default async function TherapistProfile({ params }: TherapistProfileProps) {
   const { slug } = await params;
   const t = await getTranslations("therapistProfile");
+  const locale = await getLocale();
 
-  // TODO: Fetch therapist from Supabase using slug
-  const therapist = placeholderTherapist;
+  const { data: therapist } = await supabase
+    .from("therapists")
+    .select("*")
+    .eq("slug", slug)
+    .eq("active", true)
+    .single();
+
+  if (!therapist) {
+    return (
+      <Container maxWidth="md" sx={pageContainer}>
+        <Typography variant="h4">{t("notFound")}</Typography>
+      </Container>
+    );
+  }
+
+  const title = locale === "de" ? therapist.title_de : therapist.title_en;
+  const bio = locale === "de" ? therapist.bio_de : therapist.bio_en;
 
   return (
     <Container maxWidth="md" sx={pageContainer}>
       <Box sx={profileHeader}>
         <Box sx={profilePhotoWrapper}>
           <Image
-            src={therapist.photo}
+            src={therapist.photo_url}
             alt={therapist.name}
             width={300}
             height={300}
-            style={{ objectFit: "cover", objectPosition: "center top", borderRadius: 8 }}
+            style={profilePhoto}
           />
         </Box>
-        <Box sx={{ flex: 1 }}>
+        <Box sx={profileInfo}>
           <Typography variant="h3" component="h1">
             {therapist.name}
           </Typography>
           <Typography variant="h6" color="text.secondary">
-            {therapist.title}
+            {title}
           </Typography>
           <Box sx={chipContainer}>
-            {therapist.specialties.map((s) => (
+            {therapist.specialties.map((s: string) => (
               <Chip key={s} label={s} />
             ))}
           </Box>
@@ -67,10 +96,10 @@ export default async function TherapistProfile({ params }: TherapistProfileProps
         </Box>
       </Box>
 
-      <Divider sx={{ mb: 4 }} />
+      <Divider sx={profileDivider} />
 
-      {therapist.bio.split("\n\n").map((paragraph, i) => (
-        <Typography key={i} variant="body1" sx={{ mb: 2 }}>
+      {bio?.split("\n\n").map((paragraph: string, i: number) => (
+        <Typography key={i} variant="body1" sx={bioParagraph}>
           {paragraph}
         </Typography>
       ))}

@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Box, Typography } from "@mui/material";
 import NavLink from "@/components/NavLink";
-import { bar, links } from "./styles";
+import { bar, links, legalLink } from "./styles";
 
 export default function LegalBar() {
   const t = useTranslations("legal");
@@ -19,7 +19,7 @@ export default function LegalBar() {
           component={NavLink}
           href="/impressum"
           color="text.secondary"
-          sx={{ textDecoration: "none", "&:hover": { textDecoration: "underline" } }}
+          sx={legalLink}
         >
           {t("impressum")}
         </Typography>
@@ -31,7 +31,7 @@ export default function LegalBar() {
           component={NavLink}
           href="/datenschutz"
           color="text.secondary"
-          sx={{ textDecoration: "none", "&:hover": { textDecoration: "underline" } }}
+          sx={legalLink}
         >
           {t("datenschutz")}
         </Typography>

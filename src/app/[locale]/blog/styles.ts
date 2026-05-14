@@ -1,7 +1,7 @@
 import type { SxProps, Theme } from "@mui/material";
 
 export const pageContainer: SxProps<Theme> = {
-  py: 8,
+  py: { xs: 4, md: 8 },
 };
 
 export const postCard: SxProps<Theme> = {
@@ -10,4 +10,12 @@ export const postCard: SxProps<Theme> = {
   "&:hover": {
     boxShadow: 4,
   },
+};
+
+export const subtitle: SxProps<Theme> = {
+  mb: 4,
+};
+
+export const postExcerpt: SxProps<Theme> = {
+  mt: 1,
 };

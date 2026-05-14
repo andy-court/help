@@ -21,7 +21,19 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import NavLink from "@/components/NavLink";
 import { usePathname, useRouter } from "@/i18n/navigation";
-import { toolbar, logoLink, navLinks, ctaButton, mobileMenuButton, socialLinks } from "./styles";
+import {
+  toolbar,
+  logoLink,
+  navLinks,
+  ctaButton,
+  mobileMenuButton,
+  socialLinks,
+  localeSwitchButton,
+  drawerList,
+  drawerCtaItem,
+  drawerDivider,
+  drawerSocialItem,
+} from "./styles";
 
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -84,7 +96,7 @@ export default function Header() {
               onClick={switchLocale}
               color="inherit"
               size="small"
-              sx={{ minWidth: 36, fontWeight: 700 }}
+              sx={localeSwitchButton}
             >
               {locale === "en" ? "DE" : "EN"}
             </Button>
@@ -127,7 +139,7 @@ export default function Header() {
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
       >
-        <List sx={{ width: 250 }}>
+        <List sx={drawerList}>
           {pages.map((page) => (
             <ListItem key={page.href} disablePadding>
               <ListItemButton
@@ -139,7 +151,7 @@ export default function Header() {
               </ListItemButton>
             </ListItem>
           ))}
-          <ListItem disablePadding sx={{ px: 2, py: 1 }}>
+          <ListItem disablePadding sx={drawerCtaItem}>
             <Button
               component={NavLink}
               href="/therapists"
@@ -151,13 +163,13 @@ export default function Header() {
               {t("bookSession")}
             </Button>
           </ListItem>
-          <Divider sx={{ my: 1 }} />
+          <Divider sx={drawerDivider} />
           <ListItem>
             <Button onClick={switchLocale} fullWidth>
               {locale === "en" ? "Deutsch" : "English"}
             </Button>
           </ListItem>
-          <ListItem sx={{ display: "flex", gap: 1, px: 2 }}>
+          <ListItem sx={drawerSocialItem}>
             <IconButton
               component="a"
               href="https://instagram.com"

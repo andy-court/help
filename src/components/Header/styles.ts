@@ -29,3 +29,27 @@ export const socialLinks: SxProps<Theme> = {
   gap: 0.5,
   ml: 1,
 };
+
+export const localeSwitchButton: SxProps<Theme> = {
+  minWidth: 36,
+  fontWeight: 700,
+};
+
+export const drawerList: SxProps<Theme> = {
+  width: 250,
+};
+
+export const drawerCtaItem: SxProps<Theme> = {
+  px: 2,
+  py: 1,
+};
+
+export const drawerDivider: SxProps<Theme> = {
+  my: 1,
+};
+
+export const drawerSocialItem: SxProps<Theme> = {
+  display: "flex",
+  gap: 1,
+  px: 2,
+};

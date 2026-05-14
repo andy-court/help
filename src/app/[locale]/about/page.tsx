@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Typography, Container, Box } from "@mui/material";
 import { pageContainer, section } from "./styles";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("about");
+  return {
+    title: t("title"),
+    description: t("missionText"),
+  };
+}
 
 export default function About() {
   const t = useTranslations("about");

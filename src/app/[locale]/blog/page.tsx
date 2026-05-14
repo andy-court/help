@@ -1,4 +1,5 @@
-import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+import { getTranslations, getLocale } from "next-intl/server";
 import {
   Typography,
   Container,
@@ -8,52 +9,50 @@ import {
   Button,
 } from "@mui/material";
 import NavLink from "@/components/NavLink";
-import { pageContainer, postCard } from "./styles";
+import { supabase } from "@/lib/supabase";
+import { pageContainer, postCard, subtitle, postExcerpt } from "./styles";
 
-// TODO: Replace with Supabase fetch
-const placeholderPosts = [
-  {
-    slug: "what-to-expect-first-session",
-    title: "What to Expect from Your First Therapy Session",
-    excerpt:
-      "Starting therapy can feel daunting. Here is what you can expect from your first session and how to prepare.",
-    publishedAt: "2026-05-01",
-  },
-  {
-    slug: "managing-anxiety-daily-life",
-    title: "5 Strategies for Managing Anxiety in Daily Life",
-    excerpt:
-      "Practical, evidence-based techniques you can use right now to manage anxiety and build resilience.",
-    publishedAt: "2026-04-15",
-  },
-];
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("blog");
+  return {
+    title: t("title"),
+    description: t("subtitle"),
+  };
+}
 
-export default function Blog() {
-  const t = useTranslations("blog");
+export default async function Blog() {
+  const t = await getTranslations("blog");
+  const locale = await getLocale();
+
+  const { data: posts } = await supabase
+    .from("blog_posts")
+    .select("slug, title, excerpt, published_at")
+    .eq("locale", locale)
+    .eq("published", true)
+    .order("published_at", { ascending: false });
 
   return (
     <Container maxWidth="md" sx={pageContainer}>
       <Typography variant="h3" component="h1" gutterBottom>
         {t("title")}
       </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+      <Typography variant="body1" color="text.secondary" sx={subtitle}>
         {t("subtitle")}
       </Typography>
 
-      {placeholderPosts.map((post) => (
+      {(posts ?? []).map((post) => (
         <Card key={post.slug} sx={postCard}>
           <CardContent>
             <Typography variant="h5" component="h2">
               {post.title}
             </Typography>
             <Typography variant="caption" color="text.secondary">
-              {new Date(post.publishedAt).toLocaleDateString("en-GB", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+              {new Date(post.published_at).toLocaleDateString(
+                locale === "de" ? "de-DE" : "en-GB",
+                { year: "numeric", month: "long", day: "numeric" }
+              )}
             </Typography>
-            <Typography variant="body1" sx={{ mt: 1 }}>
+            <Typography variant="body1" sx={postExcerpt}>
               {post.excerpt}
             </Typography>
           </CardContent>
