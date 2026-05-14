@@ -20,7 +20,8 @@
     "cta": "Book a Session"
   },
   "about": {
-    "title": "About Us",
+    "title": "About",
+    "bookSession": "Book a Session",
     "missionTitle": "Our Mission",
     "missionText": "We believe everyone deserves access to quality mental health support. Our platform connects you with experienced therapists who can help you navigate life's challenges in a safe, confidential environment.",
     "howTitle": "How It Works",
