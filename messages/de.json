@@ -1,0 +1,127 @@
+{
+  "common": {
+    "siteName": "Help",
+    "siteDescription": "Finden Sie einen Therapeuten und buchen Sie eine Beratungssitzung mit Google Meet."
+  },
+  "nav": {
+    "home": "Startseite",
+    "therapists": "Therapeuten",
+    "blog": "Blog",
+    "about": "Über uns",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "bookSession": "Sitzung buchen",
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz"
+  },
+  "home": {
+    "title": "Help",
+    "subtitle": "Finden Sie einen Therapeuten. Buchen Sie eine Sitzung. Beginnen Sie Ihre Reise.",
+    "cta": "Sitzung buchen"
+  },
+  "about": {
+    "title": "Über uns",
+    "missionTitle": "Unsere Mission",
+    "missionText": "Wir glauben, dass jeder Mensch Zugang zu hochwertiger psychischer Gesundheitsunterstützung verdient. Unsere Plattform verbindet Sie mit erfahrenen Therapeuten, die Ihnen helfen können, die Herausforderungen des Lebens in einer sicheren, vertraulichen Umgebung zu bewältigen.",
+    "howTitle": "So funktioniert es",
+    "howText": "Durchsuchen Sie unsere Therapeuten, finden Sie jemanden, der zu Ihren Bedürfnissen passt, und buchen Sie eine Beratungssitzung online. Sitzungen werden über Google Meet durchgeführt, sodass Sie sich bequem von zu Hause aus verbinden können.",
+    "approachTitle": "Unser Ansatz",
+    "approachText": "Jeder Mensch ist einzigartig, und so ist auch sein Weg zum Wohlbefinden. Unsere Therapeuten verwenden evidenzbasierte Ansätze, die auf Ihre individuellen Bedürfnisse und Ziele zugeschnitten sind."
+  },
+  "therapists": {
+    "title": "Unsere Therapeuten",
+    "subtitle": "Finden Sie den richtigen Therapeuten für sich. Jeder unserer Fachleute bringt einzigartige Expertise und einen einfühlsamen Ansatz in die Betreuung ein.",
+    "viewProfile": "Profil ansehen",
+    "bookSession": "Sitzung buchen"
+  },
+  "therapistProfile": {
+    "bookSession": "Sitzung buchen"
+  },
+  "booking": {
+    "title": "Sitzung buchen",
+    "description": "Wählen Sie einen Termin, der für Sie passt, mit {therapistName}. Sie erhalten eine Google-Kalender-Einladung mit einem Google-Meet-Link für Ihre Sitzung.",
+    "placeholder": "Cal.com-Terminplanungs-Widget wird hier eingebettet"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Einblicke, Tipps und Ressourcen für Ihre psychische Gesundheit.",
+    "readMore": "Weiterlesen",
+    "backToBlog": "Zurück zum Blog",
+    "by": "Von {author}"
+  },
+  "faq": {
+    "title": "Häufig gestellte Fragen",
+    "subtitle": "Finden Sie Antworten auf häufige Fragen zu unseren Dienstleistungen, dem Buchungsprozess und was Sie erwartet.",
+    "items": {
+      "booking": {
+        "question": "Wie buche ich eine Sitzung?",
+        "answer": "Durchsuchen Sie unsere Therapeuten, wählen Sie einen aus, der zu Ihren Bedürfnissen passt, und klicken Sie auf 'Sitzung buchen'. Sie sehen verfügbare Zeitfenster und können eines auswählen, das für Sie passt. Sowohl Sie als auch der Therapeut erhalten eine Google-Kalender-Einladung mit einem Google-Meet-Link."
+      },
+      "cost": {
+        "question": "Wie viel kostet eine Sitzung?",
+        "answer": "Die Sitzungsgebühren variieren je nach Therapeut. Preisinformationen finden Sie auf der Profilseite jedes Therapeuten. Wir empfehlen, die Gebühren während Ihrer ersten Beratung zu besprechen."
+      },
+      "insurance": {
+        "question": "Akzeptieren Sie Versicherungen?",
+        "answer": "Der Versicherungsschutz variiert je nach Anbieter und Tarif. Wir empfehlen Ihnen, sich bei Ihrer Versicherung zu erkundigen, ob Online-Therapiesitzungen in Ihrem Tarif abgedeckt sind."
+      },
+      "duration": {
+        "question": "Wie lange dauert eine Sitzung?",
+        "answer": "Eine Standard-Therapiesitzung dauert 50 Minuten. Einige Therapeuten bieten möglicherweise längere Sitzungen an — überprüfen Sie deren Profil für Details."
+      },
+      "cancellation": {
+        "question": "Was ist, wenn ich absagen oder umbuchen muss?",
+        "answer": "Sie können Ihre Sitzung bis zu 24 Stunden vor dem Termin absagen oder umbuchen. Absagen mit weniger als 24 Stunden Vorlaufzeit können einer Stornogebühr unterliegen."
+      },
+      "effectiveness": {
+        "question": "Ist Online-Therapie genauso wirksam wie persönliche Therapie?",
+        "answer": "Forschungen zeigen durchgehend, dass Online-Therapie bei vielen Erkrankungen, einschließlich Angst, Depression und Stress, genauso wirksam sein kann wie persönliche Therapie. Die Bequemlichkeit von Online-Sitzungen kann auch die Regelmäßigkeit und das Engagement verbessern."
+      },
+      "technology": {
+        "question": "Welche Technologie benötige ich?",
+        "answer": "Sie benötigen eine stabile Internetverbindung und ein Gerät mit Kamera und Mikrofon (Computer, Tablet oder Smartphone). Sitzungen werden über Google Meet durchgeführt — keine spezielle Software erforderlich."
+      }
+    }
+  },
+  "impressum": {
+    "title": "Impressum",
+    "responsibleTitle": "Verantwortlich für den Inhalt",
+    "responsibleText": "[Ihr vollständiger Name]\n[Ihre Straße und Hausnummer]\n[Ihre Postleitzahl und Stadt]\nDeutschland",
+    "contactTitle": "Kontakt",
+    "contactText": "E-Mail: [ihre-email@beispiel.de]\nTelefon: [Ihre Telefonnummer]",
+    "disclaimerTitle": "Haftungsausschluss",
+    "disclaimerText": "Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Wir übernehmen jedoch keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte. Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen."
+  },
+  "datenschutz": {
+    "title": "Datenschutzerklärung",
+    "overviewTitle": "Übersicht",
+    "overviewText": "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend der Datenschutz-Grundverordnung (DSGVO) sowie dieser Datenschutzerklärung.",
+    "collectionTitle": "Datenerfassung auf dieser Website",
+    "collectionText": "Bei der Nutzung dieser Website können verschiedene personenbezogene Daten erhoben werden. Dazu gehören Daten, die Sie bei der Nutzung des Kontaktformulars angeben (Name, E-Mail-Adresse, Nachrichteninhalt). Einige Daten werden automatisch von unseren IT-Systemen erfasst, wenn Sie die Website besuchen, wie z. B. Ihr Browsertyp, Ihr Betriebssystem und der Zeitpunkt des Zugriffs.",
+    "cookiesTitle": "Cookies",
+    "cookiesText": "Diese Website verwendet Cookies, die für den technischen Betrieb erforderlich sind. Dazu gehört ein Cookie zur Speicherung Ihrer Spracheinstellung. Es werden keine Tracking- oder Werbe-Cookies verwendet.",
+    "thirdPartyTitle": "Drittanbieter-Dienste",
+    "thirdPartyText": "Diese Website nutzt Cal.com für die Terminvereinbarung. Wenn Sie die Buchungsfunktion nutzen, werden Ihre Daten von Cal.com gemäß deren Datenschutzerklärung verarbeitet. Sitzungen werden über Google Meet durchgeführt, das der Datenschutzerklärung von Google unterliegt.",
+    "rightsTitle": "Ihre Rechte",
+    "rightsText": "Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem das Recht, die Berichtigung oder Löschung dieser Daten zu verlangen. Eine einmal erteilte Einwilligung zur Datenverarbeitung können Sie jederzeit widerrufen. Außerdem steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.",
+    "contactTitle": "Kontakt für Datenschutz",
+    "contactText": "Bei Fragen zum Datenschutz wenden Sie sich bitte an: [ihre-email@beispiel.de]"
+  },
+  "crisis": {
+    "text": "In einer Krise? Kostenlose 24/7-Hilfe:"
+  },
+  "legal": {
+    "impressum": "Impressum",
+    "datenschutz": "Datenschutz",
+    "copyright": "© {year} Help. Alle Rechte vorbehalten."
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Haben Sie eine Frage oder benötigen Sie weitere Informationen? Senden Sie uns eine Nachricht und wir melden uns so schnell wie möglich bei Ihnen.",
+    "nameLabel": "Name",
+    "emailLabel": "E-Mail",
+    "messageLabel": "Nachricht",
+    "send": "Nachricht senden",
+    "success": "Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze bei Ihnen."
+  }
+}
