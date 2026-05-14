@@ -4,7 +4,7 @@
 
 A multilingual (English/German) website where users can browse therapists, view profiles, and book consultation sessions. Bookings create Google Calendar invites with Google Meet links for both the user and therapist.
 
-**Status:** Planning complete, ready to start building.
+**Status:** Core features built, polish and deploy remaining.
 
 ---
 
@@ -127,7 +127,7 @@ Cloudflare Pages (hosts Next.js app)
 
 ## Social Media
 
-- Instagram and LinkedIn icon links in the footer
+- Instagram and LinkedIn icon links in the header
 - Links configurable per-therapist or site-wide
 - Simple external links (no feed integration for MVP)
 
@@ -142,8 +142,8 @@ Cloudflare Pages (hosts Next.js app)
 - [x] Set up next-intl with English and German
 - [x] Set up ESLint + TypeScript checking (`yarn lint`, `yarn tsc`)
 - [x] Set up Jest for unit testing (`yarn test`)
-- [ ] Set up Supabase project and create tables
-- [ ] Set up GitHub repo
+- [x] Set up Supabase project and create tables
+- [x] Set up GitHub repo (SSH, pushed to andy-court/help)
 - [ ] Connect to Cloudflare Pages for auto-deploy
 - [x] Warm color palette (sage green #6B8F71, warm beige #C9A96E)
 
@@ -154,36 +154,43 @@ Cloudflare Pages (hosts Next.js app)
 - [x] Home page — hero, intro, CTA
 - [x] About page
 - [x] FAQ page with expandable sections
-- [x] Crisis/emergency resources banner (Telefonseelsorge hotline numbers)
+- [x] Crisis/emergency resources banner (Telefonseelsorge hotline numbers, labelled as Germany)
 - [x] Legal links bar (Impressum + Datenschutz links, replaces old Footer)
+- [x] Mobile CTA "Book A Session" button in header toolbar
+- [x] Loading spinner for page transitions
 
 ### Phase 3: Therapist Features
-- [x] Therapists listing page (placeholder data, needs Supabase)
-- [x] Therapist profile page (dynamic route with [slug], needs Supabase)
-- [ ] Seed database with first therapist
+- [x] Therapists listing page (wired to Supabase)
+- [x] Therapist profile page (dynamic route with [slug], wired to Supabase)
+- [x] Seed database with first therapist (Livia Malkus)
+- [x] Single/multi therapist mode config (`siteConfig.ts`)
 
 ### Phase 4: Booking
-- [ ] Set up Cal.com account for therapist
-- [ ] Connect Google Calendar + enable Google Meet in Cal.com
-- [x] Booking page (placeholder for Cal.com embed, needs integration)
+- [x] Set up Cal.com account (dev account: andrew-court-urezal)
+- [ ] Connect Livia's Google Calendar + enable Google Meet in Cal.com
+- [x] Booking page with Cal.com embed widget (`@calcom/embed-react`)
+- [x] Cal.com username stored in Supabase, fetched dynamically
 - [ ] Test full flow: browse → select therapist → book → both get calendar invite with Meet link
 
 ### Phase 5: Blog
-- [x] Blog listing page (placeholder data, needs Supabase)
-- [x] Blog post page (placeholder, needs Supabase + markdown rendering)
-- [ ] Seed with first blog post
+- [x] Blog listing page (wired to Supabase, filtered by locale)
+- [x] Blog post page (wired to Supabase, joins author name)
+- [x] Seed with blog posts (2 posts × 2 locales)
 
 ### Phase 6: Contact
-- [x] Contact form page (UI done, needs Supabase submission)
-- [ ] Form submission → Supabase
+- [x] Contact form page (UI complete)
+- [x] Form submission via server action → Supabase
+- [x] Honeypot field for bot protection
 - [ ] (Optional) Email notification on submission
+- [ ] Cloudflare Turnstile CAPTCHA (add after Cloudflare setup)
 
 ### Phase 7: Polish & Deploy
-- [ ] Responsive design check (mobile, tablet, desktop)
-- [ ] SEO: meta tags, Open Graph, sitemap
+- [x] Responsive design check (mobile, tablet, desktop)
+- [x] SEO: per-page metadata, Open Graph, dynamic sitemap.xml, robots.txt
+- [x] All inline styles extracted to styles.ts files
 - [ ] Test both languages end-to-end
 - [ ] Final deploy to Cloudflare Pages
-- [ ] Test with real Cal.com booking
+- [ ] Test with real Cal.com booking (Livia's calendar)
 
 ---
 
@@ -196,6 +203,7 @@ Cloudflare Pages (hosts Next.js app)
 - [ ] Security audit — review all inputs, API routes, headers, dependencies for vulnerabilities
 - [ ] Content Security Policy (CSP) — configure nonce-based CSP headers (MUI/Emotion needs style nonce, allowlist Cal.com iframe, Supabase API, Google Fonts)
 - [ ] Cookie policy + analytics setup — Cloudflare Web Analytics (cookie-free) or similar, document what cookies the site sets (locale, auth, Cal.com embed)
+- [ ] Next.js middleware → proxy migration (build warns middleware convention is deprecated)
 
 ## Pre-Launch Recommended (Trust/Polish)
 
@@ -204,11 +212,10 @@ Cloudflare Pages (hosts Next.js app)
 - [x] Warmer color palette (sage green #6B8F71, warm beige #C9A96E — was indigo #5C6BC0)
 - [ ] Credentials/licensing info on therapist profiles
 - [ ] Transparent pricing or insurance/Krankenkasse information
-- [ ] Responsive design check (mobile, tablet, desktop)
 
 ## Future Features (Post-MVP)
 
-- [ ] Multi/single therapist config flag — `siteConfig.ts` with `mode: "single" | "multi"` to control nav, CTA destination, homepage content, and whether therapists listing page is shown
+- [x] Multi/single therapist config flag — `siteConfig.ts` with `mode: "single" | "multi"`
 - [ ] Therapist dashboard (Google login via Supabase Auth)
 - [ ] Admin panel for managing content
 - [ ] Testimonials/reviews section
@@ -224,44 +231,44 @@ Cloudflare Pages (hosts Next.js app)
 
 | # | Decision | Choice | Alternatives Considered |
 |---|----------|--------|------------------------|
-| 1 | Booking system | Cal.com (embedded) | Google Calendar API directly, Calendly |
+| 1 | Booking system | Cal.com (embedded) | Google Calendar API directly, Calendly, Acuity, TidyCal, SavvyCal |
 | 2 | Content storage | Supabase (PostgreSQL) | Markdown files in repo, Headless CMS |
 | 3 | Hosting | Cloudflare Pages | Vercel, Netlify |
 | 4 | Styling | Material UI (MUI) | Tailwind + shadcn/ui, Tailwind custom, CSS Modules |
 | 5 | Framework | Next.js (App Router) | Vite + React Router |
 | 6 | i18n approach | URL-based (/en, /de) via next-intl | Toggle button (same URL) |
 | 7 | Domain | Free .pages.dev subdomain | Custom domain, Cloudflare Registrar |
-| 8 | Social media | Icon links in footer | Feed integration, widget embeds |
+| 8 | Social media | Icon links in header | Feed integration, widget embeds |
 | 9 | Extra pages | FAQ + Contact form | FAQ only, Contact only, none |
 | 10 | Package manager | Yarn | npm |
 | 11 | Testing framework | Jest | Vitest |
 | 12 | Code quality | ESLint + `tsc --noEmit` | ESLint only |
+| 13 | Bot protection | Honeypot + server action (Turnstile later) | reCAPTCHA, hCaptcha |
 
 ---
 
-*Last updated: 2026-05-14 (end of session 3)*
+*Last updated: 2026-05-14 (end of session 4)*
 
 ## Resume Notes
 
-**Where we left off:** All frontend pages built and polished. New additions: "Book Session" CTA in header, Impressum page, Datenschutz page, crisis resources banner, legal links bar, warmer color palette (sage green/warm beige). Therapist renamed to Livia Malkus with photo slot at `public/images/therapists/livia-malkus.jpg` (user needs to place the actual file). Footer component removed. `yarn tsc`, `yarn lint`, and `yarn build` all pass clean.
+**Where we left off:** All core features built and wired up. Supabase connected with therapists, blog posts, and contact submissions. Cal.com embed working with dev account. SEO metadata on all pages. Single therapist mode enabled. Styles fully extracted to styles.ts files. Responsive breakpoints added.
 
 **Known pattern:** Can't pass next-intl `Link` as `component` prop to MUI (server/client boundary). Solved with `NavLink` wrapper (`src/components/NavLink.tsx`) — use this for all internal links. Use `getTranslations` (async) in server components, `useTranslations` in client components.
 
 **Action required from user:**
-1. Place therapist photo at `public/images/therapists/livia-malkus.jpg`
-2. Fill in real details in Impressum and Datenschutz pages (translations have `[placeholder]` markers)
-3. Create Supabase project (supabase.com, EU Frankfurt region, project name "help")
+1. Fill in real details in Impressum and Datenschutz pages (translations have `[placeholder]` markers)
+2. Connect Livia's real Google Calendar to Cal.com (replace dev account)
+3. Set up Cloudflare Pages account and connect to GitHub repo
 
-**To resume, next steps in order:**
-1. User places therapist photo and fills in legal page details
-2. Wire up Supabase client + create tables (therapists, blog_posts, contact_submissions)
-3. Replace placeholder data with Supabase queries
-4. Set up Cal.com and embed booking widget
-5. Wire contact form to Supabase
-6. Set up GitHub repo
-7. Connect Cloudflare Pages for auto-deploy
-8. Cookie consent banner (last remaining pre-launch legal item)
+**Next steps in order:**
+1. Connect Cloudflare Pages for auto-deploy
+2. Cookie consent banner (EU legal requirement)
+3. Test both languages end-to-end
+4. Migrate middleware.ts to proxy convention (Next.js 16 deprecation)
+5. Security audit + CSP headers
 
-**Next.js 16 deprecation note:** Build warns "middleware" file convention is deprecated, use "proxy" instead. Current middleware.ts works but should be migrated before production.
-
-**Single-therapist mode:** The site could easily be converted to a personal site for one therapist — change names/content, hide therapists listing page, point CTA directly to booking. Architecture already supports this.
+**Environment:**
+- GitHub: `git@github.com:andy-court/help.git` (SSH)
+- Supabase: `https://oouqobdjlkpfohcrhpom.supabase.co` (EU Frankfurt)
+- Cal.com dev account: `andrew-court-urezal`
+- Env vars in `.env.local` (gitignored): `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
