@@ -145,7 +145,7 @@ export default function Header() {
           <IconButton
             sx={mobileMenuButton}
             onClick={() => setDrawerOpen(true)}
-            aria-label="Open navigation menu"
+            aria-label={t("openMenu")}
           >
             <MenuIcon />
           </IconButton>

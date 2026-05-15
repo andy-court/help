@@ -152,7 +152,7 @@ Cloudflare Pages (hosts Next.js app)
 ### Phase 2: Core Pages
 - [x] Layout: Header with nav + language switcher + "Book Session" CTA button
 - [x] Home page — hero, intro, CTA
-- [x] About page
+- [x] About page (shows therapist profile in single mode)
 - [x] FAQ page with expandable sections
 - [x] Crisis/emergency resources banner (Telefonseelsorge hotline numbers, labelled as Germany)
 - [x] Legal links bar (Impressum + Datenschutz links, replaces old Footer)
@@ -198,17 +198,16 @@ Cloudflare Pages (hosts Next.js app)
 
 - [x] Impressum page — shell with placeholder legal text, needs real details
 - [x] Datenschutz (Privacy Policy) page — shell with GDPR text, needs real contact details
-- [ ] Cookie consent banner — EU required
 - [x] Crisis/emergency resources banner — Telefonseelsorge hotline numbers
 - [ ] Security audit — review all inputs, API routes, headers, dependencies for vulnerabilities
 - [ ] Content Security Policy (CSP) — configure nonce-based CSP headers (MUI/Emotion needs style nonce, allowlist Cal.com iframe, Supabase API, Google Fonts)
-- [ ] Cookie policy + analytics setup — Cloudflare Web Analytics (cookie-free) or similar, document what cookies the site sets (locale, auth, Cal.com embed)
+- [ ] Analytics setup — Cloudflare Web Analytics (cookie-free) or similar
 - [ ] Next.js middleware → proxy migration (build warns middleware convention is deprecated)
 
 ## Pre-Launch Recommended (Trust/Polish)
 
 - [ ] Professional headshot photos for therapists
-- [ ] Hero image on home page (calming nature/illustration, not stock photos)
+- [ ] Hero image on home page (calming nature/abstract, matching sage green/warm beige palette — user to source)
 - [x] Warmer color palette (sage green #6B8F71, warm beige #C9A96E — was indigo #5C6BC0)
 - [ ] Credentials/licensing info on therapist profiles
 - [ ] Transparent pricing or insurance/Krankenkasse information
@@ -247,7 +246,7 @@ Cloudflare Pages (hosts Next.js app)
 
 ---
 
-*Last updated: 2026-05-14 (end of session 4)*
+*Last updated: 2026-05-15 (session 5)*
 
 ## Resume Notes
 

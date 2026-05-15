@@ -21,7 +21,10 @@ export async function generateMetadata({ params }: BlogPostProps): Promise<Metad
     .eq("published", true)
     .single();
 
-  if (!post) return { title: "Not Found" };
+  if (!post) {
+    const t = await getTranslations("blog");
+    return { title: t("notFound") };
+  }
 
   return {
     title: post.title,

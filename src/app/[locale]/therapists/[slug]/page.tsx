@@ -27,7 +27,10 @@ export async function generateMetadata({ params }: TherapistProfileProps): Promi
     .eq("active", true)
     .single();
 
-  if (!therapist) return { title: "Not Found" };
+  if (!therapist) {
+    const t = await getTranslations("therapistProfile");
+    return { title: t("notFound") };
+  }
 
   const title = locale === "de" ? therapist.title_de : therapist.title_en;
   const bio = locale === "de" ? therapist.bio_de : therapist.bio_en;

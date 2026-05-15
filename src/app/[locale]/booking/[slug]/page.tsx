@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: BookingPageProps): Promise<Me
     .from("therapists")
     .select("name")
     .eq("slug", slug)
+    .eq("active", true)
     .single();
 
   const name = therapist?.name ?? slug;
