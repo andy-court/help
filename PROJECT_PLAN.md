@@ -180,9 +180,8 @@ Cloudflare Pages (hosts Next.js app)
 ### Phase 6: Contact
 - [x] Contact form page (UI complete)
 - [x] Form submission via server action → Supabase
-- [x] Honeypot field for bot protection
-- [ ] (Optional) Email notification on submission
 - [ ] Cloudflare Turnstile CAPTCHA (add after Cloudflare setup)
+- [ ] (Optional) Email notification on submission
 
 ### Phase 7: Polish & Deploy
 - [x] Responsive design check (mobile, tablet, desktop)
@@ -199,10 +198,20 @@ Cloudflare Pages (hosts Next.js app)
 - [x] Impressum page — shell with placeholder legal text, needs real details
 - [x] Datenschutz (Privacy Policy) page — shell with GDPR text, needs real contact details
 - [x] Crisis/emergency resources banner — Telefonseelsorge hotline numbers
-- [ ] Security audit — review all inputs, API routes, headers, dependencies for vulnerabilities
-- [ ] Content Security Policy (CSP) — configure nonce-based CSP headers (MUI/Emotion needs style nonce, allowlist Cal.com iframe, Supabase API, Google Fonts)
+- [x] Security audit — input validation, security headers, env validation, active checks
+- [x] Content Security Policy (CSP) — CSP headers with Cal.com, Supabase, Google Fonts allowlisted
 - [ ] Analytics setup — Cloudflare Web Analytics (cookie-free) or similar
-- [ ] Next.js middleware → proxy migration (build warns middleware convention is deprecated)
+- [x] Next.js middleware → proxy migration (renamed to proxy.ts, Next.js 16 convention)
+
+## Code Quality TODOs
+
+- [ ] Add `images.remotePatterns` to next.config.ts — allowlist Supabase domain for next/image
+- [ ] Deduplicate Supabase queries with `React.cache()` — each dynamic page queries DB twice (generateMetadata + render)
+- [ ] Extract locale helper — `locale === "de" ? x.field_de : x.field_en` duplicated 10+ times, breaks if a third locale is added
+- [ ] Add `error.tsx` and `not-found.tsx` error boundaries
+- [ ] Single mode: redirect or 404 the therapists listing page
+- [ ] Sitemap: exclude `/therapists` route in single mode
+- [ ] Extract shared `pageContainer` style — identical `{ py: { xs: 4, md: 8 } }` copy-pasted across 10 page styles
 
 ## Pre-Launch Recommended (Trust/Polish)
 
@@ -242,7 +251,7 @@ Cloudflare Pages (hosts Next.js app)
 | 10 | Package manager | Yarn | npm |
 | 11 | Testing framework | Jest | Vitest |
 | 12 | Code quality | ESLint + `tsc --noEmit` | ESLint only |
-| 13 | Bot protection | Honeypot + server action (Turnstile later) | reCAPTCHA, hCaptcha |
+| 13 | Bot protection | Cloudflare Turnstile (pending Cloudflare setup) | reCAPTCHA, hCaptcha, honeypot (removed — ineffective against modern bots) |
 
 ---
 

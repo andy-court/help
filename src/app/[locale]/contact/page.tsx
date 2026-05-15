@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import { submitContactForm } from "@/app/actions";
-import { pageContainer, form, successAlert, honeypot, submitButton } from "./styles";
+import { pageContainer, form, successAlert, submitButton } from "./styles";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -56,13 +56,6 @@ export default function Contact() {
           {error && (
             <Alert severity="error">{t("error")}</Alert>
           )}
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            style={honeypot}
-          />
           <TextField label={t("nameLabel")} name="name" required fullWidth />
           <TextField label={t("emailLabel")} name="email" type="email" required fullWidth />
           <TextField

@@ -16,12 +16,6 @@ export const successAlert: SxProps<Theme> = {
   mt: 4,
 };
 
-export const honeypot: React.CSSProperties = {
-  position: "absolute",
-  left: "-9999px",
-  opacity: 0,
-};
-
 export const submitButton: SxProps<Theme> = {
   alignSelf: "flex-start",
 };

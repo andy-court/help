@@ -8,11 +8,6 @@ const MAX_EMAIL = 254;
 const MAX_MESSAGE = 5000;
 
 export async function submitContactForm(formData: FormData) {
-  const honeypot = formData.get("website");
-  if (honeypot) {
-    return { success: true };
-  }
-
   const name = (formData.get("name") as string)?.trim();
   const email = (formData.get("email") as string)?.trim();
   const message = (formData.get("message") as string)?.trim();
